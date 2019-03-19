@@ -62,10 +62,13 @@ disc_client.on('message', (recievedMessage) => {
     //recievedMessage.channel.send("Messaged recieved from " + recievedMessage.author.toString() + ": " + recievedMessage.content)
 })
 
+// Discord to Slack sendMessage 'CGZDLT1A4' is the channel id for test-bot-channel in Mozilla Club Slack
 function sendMessageToSlack(recievedMessage) {
     slack_client.sendMessage(recievedMessage.content, 'CGZDLT1A4')
 }
 
+
+// Function for processing '!' commands on the discord side
 function processCommand(recievedMessage) {
     let fullCommand = recievedMessage.content.substr(1)
     let splitCommand = fullCommand.split(" ")
@@ -82,7 +85,7 @@ function processCommand(recievedMessage) {
     }
 }
 
-
+// Discord Command
 function helpCommand(arguments, recievedMessage) {
     recievedMessage.channel.send("If you have a question about the bot message @sin90.")
 }
