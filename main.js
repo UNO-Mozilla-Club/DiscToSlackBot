@@ -19,36 +19,8 @@ slack_client.on('message', (message) => {
   
     // Log the message
     console.log(`(channel:${message.channel}) ${message.user} says: ${message.text}`);
+
   });
-
-  (async () => {
-    // Load the current channels list asynchronously
-    //const res = await web.channels.list()
-
-    //console.log(res);
-    // Take any channel for which the bot is a member
-
-    const msg = await slack_client.sendMessage('Hello, world!', 'CH1QN7WKE');
-    console.log(msg);
-
-  })();
-
-// const currentTime = new Date().toTimeString();
-
-// (async () => {
-//     const res = await slack_client.auth.test()
-
-//     const userId = res.user_id
-
-//     await slack_client.chat.postMessage({
-//         channel: userId,
-//         text: `The current time is ${currentTime}`,
-//     });
-
-//     console.log('Message Success!')
-// })();
-
-
 
 const disc_client = new Discord.Client();
 
@@ -85,9 +57,14 @@ disc_client.on('message', (recievedMessage) => {
     if (recievedMessage.content.startsWith("!")) {
         processCommand(recievedMessage)
     }
+
+    sendMessageToSlack(recievedMessage)
     //recievedMessage.channel.send("Messaged recieved from " + recievedMessage.author.toString() + ": " + recievedMessage.content)
 })
 
+function sendMessageToSlack(recievedMessage) {
+    slack_client.sendMessage(recievedMessage.content, 'CGZDLT1A4')
+}
 
 function processCommand(recievedMessage) {
     let fullCommand = recievedMessage.content.substr(1)
