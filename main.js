@@ -110,7 +110,5 @@ function helpCommand(arguments, recievedMessage) {
     recievedMessage.channel.send("If you have a question about the bot message @sin90.")
 }
 
-// Bot token don't put it in repo
-bot_secret_token = "NTU3MDE2MzU2MDkzMTY1NTcz.D3CbKQ.JeqeD1mHLA9HOkFxb4KSWFALbok"
 
-disc_client.login(bot_secret_token)
+disc_client.login(process.env.DISCORD_TOKEN_BOT)
